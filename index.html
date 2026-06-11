@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מ.י.ה | BY MAYA – סטודיו לעיצוב והדפסה</title>
+  <meta name="description" content="סטודיו לעיצוב והדפסה מותאם אישית – ברכונים, הזמנות ומוצרי נייר לאירועים מיוחדים" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500;600&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:       #111110;
+      --stone-dark:  #2a2925;
+      --stone-mid:   #6b6860;
+      --stone-light: #c8c4bc;
+      --stone-pale:  #f0ede8;
+      --white:       #faf9f7;
+      --gold:        #b8a98c;
+      --font-serif:  'Bodoni Moda', Georgia, serif;
+      --font-sans:   'Assistant', 'Jost', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--black);
+      direction: rtl;
+      text-align: right;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── ANNOUNCEMENT BAR ─────────────────────────── */
+    .announcement-bar {
+      background: var(--black);
+      color: var(--stone-pale);
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      padding: 10px 20px;
+      font-weight: 300;
+    }
+
+    /* ─── HEADER ───────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--white);
+      border-bottom: 1px solid var(--stone-light);
+      padding: 0 40px;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 24px;
+    }
+
+    .logo-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo-he {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: var(--black);
+    }
+    .logo-en {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--stone-mid);
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--stone-dark);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    nav a:hover { color: var(--black); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      cursor: pointer;
+    }
+    .btn-whatsapp:hover { background: var(--stone-dark); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 88vh;
+      min-height: 560px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-bg-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.52);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone-mid);
+      border-top: 1px solid var(--stone-light);
+      border-bottom: 1px solid var(--stone-light);
+      padding: 6px 0;
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--stone-light);
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 440px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .hero-logo-main {
+      display: block;
+      height: 100px;
+      width: auto;
+      margin: 0 auto 28px;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 32px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--stone-dark); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--black);
+      padding: 14px 32px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border-radius: 2px;
+      border: 1px solid var(--stone-light);
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--black); background: rgba(0,0,0,0.03); }
+
+    /* ─── STRIP ────────────────────────────────────── */
+    .strip {
+      background: var(--black);
+      color: var(--stone-pale);
+      padding: 16px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 56px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+    }
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .strip-icon {
+      width: 18px;
+      height: 18px;
+      opacity: 0.7;
+    }
+
+    /* ─── SECTIONS SHARED ──────────────────────────── */
+    .section {
+      padding: 90px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone-mid);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+
+    .section-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--stone-light);
+      margin-bottom: 48px;
+    }
+
+    /* ─── CATEGORIES ───────────────────────────────── */
+    .categories-wrap {
+      background: var(--stone-pale);
+      padding: 80px 0;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+
+    .category-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--stone-light);
+      text-decoration: none;
+      display: block;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .category-card:hover img { transform: scale(1.05); }
+
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+      transition: opacity 0.3s;
+    }
+    .category-card:hover .category-overlay { opacity: 0.9; }
+
+    .category-info {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      padding: 28px 24px;
+      color: var(--white);
+    }
+    .category-name {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .category-count {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+    }
+
+    /* Category placeholders */
+    .cat-placeholder-1 { background: linear-gradient(135deg, #d4cfc8, #bfb9b0); }
+    .cat-placeholder-2 { background: linear-gradient(135deg, #ccc7be, #b5b0a7); }
+    .cat-placeholder-3 { background: linear-gradient(135deg, #c2bdb5, #aaa49c); }
+    .cat-placeholder-4 { background: linear-gradient(135deg, #b8b3aa, #9f9a91); }
+
+    /* ─── FEATURED PRODUCTS ────────────────────────── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .product-card {
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .product-image-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--stone-pale);
+      margin-bottom: 16px;
+      border-radius: 2px;
+    }
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .product-card:hover .product-image-wrap img { transform: scale(1.04); }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 5px 10px;
+      border-radius: 1px;
+    }
+
+    .product-quick-action {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .product-card:hover .product-quick-action {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .product-quick-action button {
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      padding: 10px 28px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      border-radius: 1px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      transition: background 0.2s;
+    }
+    .product-quick-action button:hover { background: var(--stone-pale); }
+
+    .product-meta { padding: 0 4px; }
+    .product-collection {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone-mid);
+      margin-bottom: 4px;
+    }
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .product-price {
+      font-size: 14px;
+      color: var(--stone-dark);
+      font-weight: 400;
+    }
+    .price-note {
+      font-size: 12px;
+      color: var(--stone-mid);
+      margin-top: 2px;
+    }
+
+    /* Product placeholders */
+    .prod-ph { background: linear-gradient(160deg, #e8e4de, #d5d0c9); }
+
+    /* ─── ABOUT BAND ───────────────────────────────── */
+    .about-band {
+      background: var(--black);
+      color: var(--white);
+      padding: 100px 40px;
+    }
+    .about-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-image {
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--stone-dark);
+    }
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .about-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+    .about-title em { font-style: italic; color: var(--gold); }
+    .about-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--stone-light);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .about-signature {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 32px;
+    }
+
+    /* ─── PROCESS ──────────────────────────────────── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--stone-light);
+    }
+    .step {
+      padding: 48px 32px 48px 0;
+      border-left: 1px solid var(--stone-light);
+    }
+    .step:last-child { border-left: none; }
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      color: var(--stone-light);
+      font-weight: 400;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--black);
+    }
+    .step-text {
+      font-size: 14px;
+      color: var(--stone-mid);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ─── TESTIMONIALS ─────────────────────────────── */
+    .testimonials-bg {
+      background: var(--stone-pale);
+      padding: 80px 40px;
+    }
+    .testimonials-inner { max-width: 1280px; margin: 0 auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      padding: 32px;
+      border-radius: 2px;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+    .star {
+      width: 14px;
+      height: 14px;
+      color: var(--gold);
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--stone-dark);
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--black);
+    }
+    .testimonial-event {
+      font-size: 12px;
+      color: var(--stone-mid);
+      margin-top: 2px;
+    }
+
+    /* ─── FAQ ──────────────────────────────────────── */
+    .faq-list {
+      max-width: 720px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--stone-light);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: right;
+      padding: 22px 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--black);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-q svg {
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-q svg { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--stone-mid);
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 22px;
+    }
+
+    /* ─── CTA BAND ─────────────────────────────────── */
+    .cta-band {
+      background: var(--stone-pale);
+      border-top: 1px solid var(--stone-light);
+      border-bottom: 1px solid var(--stone-light);
+      text-align: center;
+      padding: 80px 40px;
+    }
+    .cta-band .section-label { text-align: center; }
+    .cta-band .section-title { text-align: center; margin-bottom: 12px; }
+    .cta-band p {
+      color: var(--stone-mid);
+      font-size: 16px;
+      font-weight: 300;
+      margin-bottom: 36px;
+    }
+    .cta-band .hero-ctas { justify-content: center; }
+
+    /* ─── FOOTER ───────────────────────────────────── */
+    footer {
+      background: var(--black);
+      color: var(--stone-pale);
+      padding: 64px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo-he { color: var(--white); font-size: 20px; }
+    .footer-brand .logo-en { color: var(--stone-mid); }
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--stone-mid);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-top: 16px;
+      max-width: 260px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer-socials a:hover { border-color: var(--gold); }
+    .footer-socials svg { color: var(--stone-light); }
+
+    .footer-col h4 {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      text-decoration: none;
+      color: var(--stone-mid);
+      font-size: 14px;
+      font-weight: 300;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--stone-mid);
+    }
+    .footer-bottom a { color: var(--stone-mid); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--stone-light); }
+
+    /* ─── WHATSAPP FLOAT ───────────────────────────── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      z-index: 100;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+    }
+    .wa-tooltip {
+      position: absolute;
+      left: 64px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
+
+    /* ─── MOBILE NAV ───────────────────────────────── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 200;
+      padding: 80px 32px 40px;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 22px;
+      font-family: var(--font-serif);
+      font-weight: 500;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--stone-light);
+      cursor: pointer;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--black);
+      padding: 8px;
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 1024px) {
+      .categories-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .step { border-left: 1px solid var(--stone-light); padding-left: 0; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      nav { display: none; }
+      .header-actions .btn-whatsapp span { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { height: 80vh; }
+      .hero-image-side { width: 100%; opacity: 0.3; }
+      .hero-content { padding: 0 24px; }
+      .hero-text { max-width: 100%; }
+
+      .strip { flex-direction: column; gap: 12px; padding: 20px; }
+
+      .section { padding: 60px 24px; }
+      .categories-wrap { padding: 48px 0; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .products-grid { grid-template-columns: 1fr; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { aspect-ratio: 16/9; }
+      .about-band { padding: 60px 24px; }
+
+      .process-steps { grid-template-columns: 1fr; }
+
+      .testimonials-bg { padding: 60px 24px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 48px 24px 24px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+      .wa-float { bottom: 20px; left: 20px; width: 50px; height: 50px; }
+    }
+
+    /* ─── SCROLL FADE-IN ────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar">
+  משלוח חינם בקנייה מעל ₪499 &nbsp;|&nbsp; הדמיה דיגיטלית תוך 48 שעות &nbsp;|&nbsp; שירות אישי לכל לקוח
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo-block">
+      <img src="images/מ.י.ה - לוגו.svg" alt="מ.י.ה BY MAYA STUDIO" style="height:64px;width:auto;" />
+    </a>
+
+    <nav>
+      <a href="#categories">הקולקציות</a>
+      <a href="#about">הסיפור שלנו</a>
+      <a href="#process">איך זה עובד</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/972549506336" class="btn-whatsapp" target="_blank" rel="noopener">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        <span>ייעוץ בוואטסאפ</span>
+      </a>
+      <div class="hamburger" onclick="toggleMenu()" aria-label="תפריט">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMenu()">✕</button>
+  <a href="#categories" onclick="toggleMenu()">הקולקציות</a>
+  <a href="#products" onclick="toggleMenu()">מוצרים</a>
+  <a href="#about" onclick="toggleMenu()">הסיפור שלנו</a>
+  <a href="#process" onclick="toggleMenu()">איך זה עובד</a>
+  <a href="#contact" onclick="toggleMenu()">צור קשר</a>
+  <a href="https://wa.me/972549506336" target="_blank" rel="noopener" style="color:#25D366;border-bottom:none;margin-top:24px;">ייעוץ בוואטסאפ</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-img">
+    <img src="images/IMG_6975.jpg" alt="ברכונים מעוצבים מ.י.ה סטודיו" loading="eager" />
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-text fade-in" style="text-align:center; max-width:600px; padding:0 24px;">
+      <img src="images/מ.י.ה - לוגו.svg" alt="מ.י.ה BY MAYA" class="hero-logo-main" />
+      <h1 class="hero-title" style="color:var(--white); font-size:clamp(28px,4vw,52px); margin-bottom:16px;">
+        כל רגע מיוחד ראוי<br/><em>לעיצוב שיזכרו אותו</em>
+      </h1>
+      <p class="hero-sub">
+        ברכונים, הזמנות ומוצרי נייר בעיצוב אישי לחתונות, בני מצווה, שבתות חתן וימי זיכרון
+      </p>
+      <div class="hero-ctas">
+        <a href="#categories" class="btn-primary">לקטלוג המוצרים</a>
+        <a href="https://wa.me/972549506336" class="btn-outline" target="_blank" rel="noopener" style="color:var(--white);border-color:rgba(255,255,255,0.5);">ייעוץ חינם</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section id="categories" class="categories-wrap">
+  <div class="section" style="padding-bottom: 5px;">
+    <p class="section-label fade-in">הקולקציות שלנו</p>
+    <h2 class="section-title fade-in">מוצרים לכל אירוע מיוחד</h2>
+  </div>
+
+  <div class="categories-grid" style="grid-template-columns:repeat(4,1fr);">
+    <a href="galeria.html#ברכות השחר" class="category-card" aria-label="ברכות השחר">
+      <img src="images/ברכות השחר/IMG_6666.jpg" alt="ברכות השחר" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">ברכות השחר</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#הבדלה - דגם ניסים" class="category-card" aria-label="הבדלה - דגם ניסים">
+      <img src="images/הבדלה - דגם ניסים/IMG_6633.jpg" alt="הבדלה דגם ניסים" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">הבדלה<br/>דגם ניסים</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#נועם - הפרשת חלה" class="category-card" aria-label="נועם - הפרשת חלה">
+      <img src="images/נועם - הפרשת חלה/IMG_6857.jpg" alt="נועם הפרשת חלה" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">נועם<br/>הפרשת חלה</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#נועם - מזמור לתודה" class="category-card" aria-label="נועם - מזמור לתודה">
+      <img src="images/נועם - מזמור לתודה/IMG_6863.jpg" alt="נועם מזמור לתודה" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">נועם<br/>מזמור לתודה</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#נועם - נשמת כל חי" class="category-card" aria-label="נועם - נשמת כל חי">
+      <img src="images/נועם - נשמת כל חי/IMG_6893.jpg" alt="נועם נשמת כל חי" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">נועם<br/>נשמת כל חי</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#סדר הדלקת נרות - דגם בר" class="category-card" aria-label="סדר הדלקת נרות - דגם בר">
+      <img src="images/סדר הדלקת נרות - דגם בר/IMG_6942.jpg" alt="סדר הדלקת נרות דגם בר" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">סדר הדלקת נרות<br/>דגם בר</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#סדר הפרשת חלה - דגם שאנל" class="category-card" aria-label="סדר הפרשת חלה - דגם שאנל">
+      <img src="images/סדר הפרשת חלה - דגם שאנל/IMG_6799.jpg" alt="סדר הפרשת חלה דגם שאנל" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">סדר הפרשת חלה<br/>דגם שאנל</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+
+    <a href="galeria.html#תמונות כללי" class="category-card" aria-label="תמונות כללי">
+      <img src="images/תמונות כללי/IMG_0078.jpg" alt="תמונות כללי" loading="lazy" />
+      <div class="category-overlay"></div>
+      <div class="category-info">
+        <p class="category-name">גלריה כללית</p>
+        <p class="category-count">צפה בקולקציה ←</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<!-- About Band -->
+<section id="about" class="about-band">
+  <div class="about-inner">
+    <div class="about-image">
+      <img src="images/IMG_0108.jpg" alt="קולקציית מוצרים מ.י.ה סטודיו" loading="lazy" />
+    </div>
+    <div>
+      <p class="about-label">הסיפור שלנו</p>
+      <h2 class="about-title">
+        כשעיצוב פוגש<br/>
+        <em>משמעות אמיתית</em>
+      </h2>
+      <p class="about-text">
+        מ.י.ה – מעשה ידי השם נולד מתוך אהבה עמוקה לפרטים הקטנים שהופכים כל אירוע לבלתי נשכח. כל ברכון, כל הזמנה, כל מוצר נייר – עוצב עם לב שלם ועין חדה.
+      </p>
+      <p class="about-text">
+        אנו מאמינים שכל משפחה ראויה לקבל עיצוב שמספר את הסיפור שלה. בין אם מדובר בשמחה של חתן וכלה, ביום מיוחד של בר מצווה, ובין אם בהנצחה יקרה לעילוי נשמת אהוב – הנייר שלנו נושא את ההקדשה הזו.
+      </p>
+      <div class="about-signature">מיה</div>
+      <div style="margin-top: 32px;">
+        <a href="#contact" class="btn-primary" style="background:var(--white);color:var(--black);">צרו קשר</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section>
+  <div class="section" style="padding-bottom: 0;">
+    <p class="section-label fade-in">איך זה עובד</p>
+    <h2 class="section-title fade-in">מהזמנה עד הדלת – <em style="font-style:italic;color:var(--stone-mid);">בארבעה שלבים</em></h2>
+  </div>
+  <div class="section" style="padding-top: 0;" id="process">
+    <div class="process-steps">
+      <div class="step fade-in">
+        <div class="step-num">01</div>
+        <h3 class="step-title">בוחרים דגם</h3>
+        <p class="step-text">עוברים על הקטלוג, בוחרים את הדגם האהוב ומלאים את פרטי האירוע</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">02</div>
+        <h3 class="step-title">מקבלים הדמיה</h3>
+        <p class="step-text">תוך 48 שעות שולחים לכם הדמיה דיגיטלית עם הפרטים שלכם לאישור</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">03</div>
+        <h3 class="step-title">מאשרים ומשלמים</h3>
+        <p class="step-text">לאחר אישור ההדמיה, מבצעים תשלום מאובטח ועוברים לייצור</p>
+      </div>
+      <div class="step fade-in">
+        <div class="step-num">04</div>
+        <h3 class="step-title">מקבלים עד הבית</h3>
+        <p class="step-text">המוצרים מגיעים ישירות אליכם באריזה מוקפדת, מוכנים לאירוע</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-bg">
+  <div class="testimonials-inner">
+    <div style="margin-bottom: 48px;">
+      <p class="section-label fade-in">לקוחות מרוצים</p>
+      <h2 class="section-title fade-in">מה אומרים עלינו</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">
+          "הברכונים יצאו מדהימים! כל האורחים בחתונה שאלו אותנו מאיפה הזמנו. השירות האישי של מיה פשוט יוצא מן הכלל."
+        </p>
+        <p class="testimonial-name">שירה ויובל כהן</p>
+        <p class="testimonial-event">שבת חתן, תשפ"ה</p>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">
+          "הזמנו ברכונים לזכרו של אבא. מיה הייתה רגישה, מקצועית ומדויקת. המוצר הסופי היה מרגש ויפהפה. תודה מכל הלב."
+        </p>
+        <p class="testimonial-name">משפחת לוי</p>
+        <p class="testimonial-event">ברכונים לעילוי נשמת</p>
+      </div>
+
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="testimonial-text">
+          "הזמנו ספרוני הפרשת חלה לחינה שלי. כל חברה שקיבלה לא האמינה שזה מותאם אישית. ממש עבודת אמנות!"
+        </p>
+        <p class="testimonial-name">נועה אברהם</p>
+        <p class="testimonial-event">ברכון חינה, תשפ"ה</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section">
+    <p class="section-label fade-in">שאלות נפוצות</p>
+    <h2 class="section-title fade-in">כל מה שרציתם לדעת</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          מה זמן האספקה?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </button>
+        <div class="faq-a">לאחר אישור ההדמיה, זמן הייצור הוא 7–10 ימי עסקים. משלוח עד הבית 1–2 ימים נוספים. ניתן לבקש הזמנה מזורזת בתוספת תשלום.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          מה המינימום להזמנה?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </button>
+        <div class="faq-a">המינימום הוא 50 יחידות לרוב המוצרים. לחלק מהדגמים ניתן להזמין מ־30 יחידות. ניתן לפנות אלינו לייעוץ על כמויות קטנות יותר.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          מתי מקבלים הדמיה?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </button>
+        <div class="faq-a">לאחר מילוי הפרטים ותשלום, תקבלו הדמיה דיגיטלית תוך 48 שעות. ניתן לבקש עד 2 תיקונים ללא עלות נוספת.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          אילו אפשרויות נייר יש?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </button>
+        <div class="faq-a">אנו מציעים: נייר מט פרימיום, נייר פנינה (מבריק), נייר טקסטורה (גרגרי) ונייר קראפט. כל סוג נייר בעובי 250–350 גר'.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          ניתן להעלות לוגו משלי?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </button>
+        <div class="faq-a">בוודאי! בעמוד המוצר יש אפשרות להעלות קובץ לוגו (PNG/SVG רקע שקוף) או רשימת שמות (קובץ Excel). הכל מתבצע ישירות באתר.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <p class="section-label">מוכנים להתחיל?</p>
+  <h2 class="section-title">ניצור יחד משהו<br/><em style="font-style:italic;color:var(--stone-mid);">שיזכרו לנצח</em></h2>
+  <p>מלאו את הפרטים ונחזור אליכם תוך שעות ספורות</p>
+  <div class="hero-ctas">
+    <a href="#categories" class="btn-primary">לקטלוג המוצרים</a>
+    <a href="https://wa.me/972549506336" class="btn-outline" target="_blank" rel="noopener">ייעוץ בוואטסאפ</a>
+  </div>
+</div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section">
+    <p class="section-label fade-in">צרו קשר</p>
+    <h2 class="section-title fade-in">נשמח לשמוע מכם</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;" class="contact-grid">
+      <div>
+        <form onsubmit="return false;" style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <label for="name" style="display:block;font-size:13px;letter-spacing:0.06em;color:var(--stone-mid);margin-bottom:8px;">שם מלא</label>
+            <input id="name" type="text" placeholder="ישראל ישראלי" style="width:100%;padding:14px 16px;border:1px solid var(--stone-light);border-radius:2px;font-size:15px;font-family:var(--font-sans);background:var(--white);color:var(--black);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--black)'" onblur="this.style.borderColor='var(--stone-light)'" />
+          </div>
+          <div>
+            <label for="phone" style="display:block;font-size:13px;letter-spacing:0.06em;color:var(--stone-mid);margin-bottom:8px;">טלפון</label>
+            <input id="phone" type="tel" placeholder="054-950-6336" style="width:100%;padding:14px 16px;border:1px solid var(--stone-light);border-radius:2px;font-size:15px;font-family:var(--font-sans);background:var(--white);color:var(--black);outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--black)'" onblur="this.style.borderColor='var(--stone-light)'" />
+          </div>
+          <div>
+            <label for="event" style="display:block;font-size:13px;letter-spacing:0.06em;color:var(--stone-mid);margin-bottom:8px;">סוג האירוע</label>
+            <select id="event" style="width:100%;padding:14px 16px;border:1px solid var(--stone-light);border-radius:2px;font-size:15px;font-family:var(--font-sans);background:var(--white);color:var(--black);outline:none;appearance:none;cursor:pointer;">
+              <option value="">בחרו סוג אירוע</option>
+              <option>שבת חתן</option>
+              <option>בר / בת מצווה</option>
+              <option>חינה / מקווה</option>
+              <option>הנצחה – לעילוי נשמת</option>
+              <option>אחר</option>
+            </select>
+          </div>
+          <div>
+            <label for="msg" style="display:block;font-size:13px;letter-spacing:0.06em;color:var(--stone-mid);margin-bottom:8px;">פרטים נוספים</label>
+            <textarea id="msg" rows="4" placeholder="ספרו לנו על האירוע שלכם..." style="width:100%;padding:14px 16px;border:1px solid var(--stone-light);border-radius:2px;font-size:15px;font-family:var(--font-sans);background:var(--white);color:var(--black);outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--black)'" onblur="this.style.borderColor='var(--stone-light)'"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;">שלחו פנייה</button>
+        </form>
+      </div>
+
+      <div style="padding-top: 8px;">
+        <div style="border-top:1px solid var(--stone-light);padding-top:32px;margin-bottom:32px;">
+          <h3 style="font-family:var(--font-serif);font-size:20px;margin-bottom:16px;font-weight:500;">פרטי התקשרות</h3>
+          <p style="font-size:15px;color:var(--stone-mid);margin-bottom:12px;font-weight:300;">
+            <strong style="color:var(--black);font-weight:500;">טלפון:</strong> 054-950-6336
+          </p>
+          <p style="font-size:15px;color:var(--stone-mid);margin-bottom:12px;font-weight:300;">
+            <strong style="color:var(--black);font-weight:500;">אינסטגרם:</strong>
+            <a href="https://www.instagram.com/bymaya_studio" target="_blank" rel="noopener" style="color:var(--stone-mid);text-decoration:none;">@bymaya_studio</a>
+          </p>
+            <p style="font-size:15px;color:var(--stone-mid);margin-bottom:12px;font-weight:300;">
+            <strong style="color:var(--black);font-weight:500;">מייל:</strong>
+            <a href="mailto:bymaya.design.studio@gmail.com" target="_blank" rel="noopener" style="color:var(--stone-mid);text-decoration:none;">bymaya.design.studio@gmail.com</a>
+          </p>
+          <p style="font-size:15px;color:var(--stone-mid);font-weight:300;">
+            <strong style="color:var(--black);font-weight:500;">שעות פעילות:</strong> א'–ה' 09:00–18:00
+          </p>
+        </div>
+        <div style="border-top:1px solid var(--stone-light);padding-top:32px;">
+          <h3 style="font-family:var(--font-serif);font-size:20px;margin-bottom:16px;font-weight:500;">משלוחים</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+            <li style="font-size:14px;color:var(--stone-mid);font-weight:300;display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--black);font-weight:600;flex-shrink:0;">✓</span> איסוף עצמי מהסטודיו – חינם
+            </li>
+            <li style="font-size:14px;color:var(--stone-mid);font-weight:300;display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--black);font-weight:600;flex-shrink:0;">✓</span> שליח עד הבית – ₪40
+            </li>
+            <li style="font-size:14px;color:var(--stone-mid);font-weight:300;display:flex;gap:10px;align-items:flex-start;">
+              <span style="color:var(--black);font-weight:600;flex-shrink:0;">✓</span> משלוח חינם בקנייה מעל ₪499
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo-block" style="text-align:right;">
+          <span class="logo-he">מ.י.ה</span>
+          <span class="logo-en">BY MAYA STUDIO</span>
+        </a>
+        <p>סטודיו לעיצוב והדפסה מותאם אישית. כל מוצר עוצב באהבה ובדייקנות לרגע המיוחד שלכם.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/bymaya_studio" target="_blank" rel="noopener" aria-label="אינסטגרם">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://wa.me/972549506336" target="_blank" rel="noopener" aria-label="וואטסאפ">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>קולקציות</h4>
+        <ul>
+          <li><a href="#">ברכונים לחינה</a></li>
+          <li><a href="#">הפרשת חלה</a></li>
+          <li><a href="#">שבת חתן</a></li>
+          <li><a href="#">בר · בת מצווה</a></li>
+          <li><a href="#">זיכרון והנצחה</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>מידע</h4>
+        <ul>
+          <li><a href="#">הסיפור שלנו</a></li>
+          <li><a href="#">משלוחים וזמנים</a></li>
+          <li><a href="#">שאלות נפוצות</a></li>
+          <li><a href="#">צרו קשר</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>משפטי</h4>
+        <ul>
+          <li><a href="#">תקנון האתר</a></li>
+          <li><a href="#">מדיניות פרטיות</a></li>
+          <li><a href="#">הצהרת נגישות</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 מ.י.ה – BY MAYA STUDIO. כל הזכויות שמורות.</span>
+      <span>עוצב ופותח באהבה</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/972549506336" class="wa-float" target="_blank" rel="noopener" aria-label="פנו אלינו בוואטסאפ">
+  <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+  <span class="wa-tooltip">ייעוץ חינם בוואטסאפ</span>
+</a>
+
+<script>
+  // Mobile menu
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Reduce motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.fade-in').forEach(el => { el.style.opacity = 1; el.style.transform = 'none'; });
+  }
+</script>
+
+</body>
+</html>

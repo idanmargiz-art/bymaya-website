@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גלריה | מ.י.ה BY MAYA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #111110; --stone-dark: #2a2925; --stone-mid: #6b6860;
+      --stone-light: #c8c4bc; --stone-pale: #f0ede8; --white: #faf9f7;
+      --gold: #b8a98c;
+      --font-serif: 'Bodoni Moda', Georgia, serif;
+      --font-sans: 'Assistant', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: var(--white); color: var(--black); direction: rtl; text-align: right; line-height: 1.6; }
+
+    /* Header */
+    .announcement-bar { background: var(--black); color: var(--stone-pale); text-align: center; font-size: 13px; letter-spacing: 0.08em; padding: 10px 20px; font-weight: 300; }
+    header { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 1px solid var(--stone-light); padding: 0 40px; }
+    .header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo-block { display: flex; align-items: center; text-decoration: none; }
+    .logo-block img { height: 56px; width: auto; }
+    .btn-whatsapp { display: flex; align-items: center; gap: 8px; background: var(--black); color: var(--white); text-decoration: none; padding: 10px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; border-radius: 2px; transition: background 0.2s; cursor: pointer; }
+    .btn-whatsapp:hover { background: var(--stone-dark); }
+
+    /* Page header */
+    .page-header {
+      background: var(--stone-pale);
+      border-bottom: 1px solid var(--stone-light);
+      padding: 56px 40px 48px;
+      text-align: center;
+    }
+    .breadcrumb { font-size: 13px; color: var(--stone-mid); margin-bottom: 16px; }
+    .breadcrumb a { color: var(--stone-mid); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--black); }
+    .page-title { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 48px); font-weight: 500; color: var(--black); margin-bottom: 12px; }
+    .page-subtitle { font-size: 15px; color: var(--stone-mid); font-weight: 300; }
+
+    /* Gallery grid */
+    .gallery-section { max-width: 1280px; margin: 0 auto; padding: 64px 40px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--stone-pale);
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.93);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      border-radius: 2px;
+    }
+    .lightbox-close {
+      position: fixed; top: 20px; left: 20px;
+      background: none; border: none; color: white;
+      font-size: 32px; cursor: pointer; padding: 8px;
+      line-height: 1;
+      opacity: 0.8; transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-nav {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.12); border: none; color: white;
+      font-size: 28px; cursor: pointer; padding: 16px 12px;
+      border-radius: 2px; transition: background 0.2s;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
+    .lightbox-prev { right: 20px; }
+    .lightbox-next { left: 20px; }
+    .lightbox-counter {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.6); font-size: 13px; font-family: var(--font-sans);
+    }
+
+    /* Back & CTA */
+    .bottom-actions {
+      text-align: center;
+      padding: 0 40px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--stone-mid);
+      border: 1px solid var(--stone-light);
+      padding: 12px 28px; font-size: 14px; font-weight: 500;
+      font-family: var(--font-sans);
+      letter-spacing: 0.04em; border-radius: 2px;
+      text-decoration: none; transition: all 0.2s; cursor: pointer;
+    }
+    .btn-back:hover { color: var(--black); border-color: var(--black); }
+    .btn-primary {
+      background: var(--black); color: var(--white);
+      padding: 14px 36px; font-size: 14px; font-weight: 500;
+      letter-spacing: 0.06em; text-decoration: none; border-radius: 2px;
+      transition: background 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--stone-dark); }
+
+    /* WhatsApp float */
+    .wa-float { position: fixed; bottom: 28px; left: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 100; text-decoration: none; transition: transform 0.2s; }
+    .wa-float:hover { transform: scale(1.08); }
+
+    /* Footer */
+    footer { background: var(--black); color: var(--stone-pale); padding: 40px; text-align: center; font-size: 13px; color: var(--stone-mid); }
+    footer a { color: var(--stone-mid); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      .page-header { padding: 40px 24px 32px; }
+      .gallery-section { padding: 40px 16px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .bottom-actions { padding: 0 24px 56px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Fade in */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<div class="announcement-bar">משלוח חינם בקנייה מעל ₪499 &nbsp;|&nbsp; הדמיה דיגיטלית תוך 48 שעות &nbsp;|&nbsp; שירות אישי לכל לקוח</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-block">
+      <img src="images/מ.י.ה - לוגו.svg" alt="מ.י.ה BY MAYA STUDIO" />
+    </a>
+    <a href="https://wa.me/972549506336" class="btn-whatsapp" target="_blank" rel="noopener">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+      ייעוץ בוואטסאפ
+    </a>
+  </div>
+</header>
+
+<!-- Page Header -->
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html">דף הבית</a> ← <span id="breadcrumb-name">גלריה</span></p>
+  <h1 class="page-title" id="page-title">טוען...</h1>
+  <p class="page-subtitle" id="page-subtitle"></p>
+</div>
+
+<!-- Gallery -->
+<section class="gallery-section">
+  <div class="gallery-grid" id="gallery-grid"></div>
+</section>
+
+<!-- Bottom actions -->
+<div class="bottom-actions">
+  <a href="https://wa.me/972549506336" class="btn-primary" target="_blank" rel="noopener">להזמנה ופרטים נוספים בוואטסאפ</a>
+  <a href="index.html" class="btn-back">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    חזרה לדף הבית
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightboxBtn()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(1); event.stopPropagation()">‹</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(-1); event.stopPropagation()">›</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/972549506336" class="wa-float" target="_blank" rel="noopener" aria-label="פנו אלינו בוואטסאפ">
+  <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+</a>
+
+<footer>
+  <p>© 2025 מ.י.ה – BY MAYA STUDIO. כל הזכויות שמורות.</p>
+</footer>
+
+<script>
+  const products = {
+    "ברכות השחר": {
+      subtitle: "ברכונים לחינה ומקווה",
+      images: ["IMG_6666.jpg","IMG_6667.jpg","IMG_6668.jpg","IMG_6673.jpg","IMG_6674.jpg","IMG_6685.jpg","IMG_6686.jpg"]
+    },
+    "הבדלה - דגם ניסים": {
+      subtitle: "ברכון הבדלה בעיצוב אישי",
+      images: ["IMG_6633.jpg","IMG_6638.jpg","IMG_6639.jpg","IMG_6642.jpg","IMG_6644.jpg","IMG_6652.jpg","IMG_6654.jpg","IMG_6661.jpg"]
+    },
+    "נועם - הפרשת חלה": {
+      subtitle: "ספרון הפרשת חלה – קולקציית נועם",
+      images: ["IMG_6843.jpg","IMG_6844.jpg","IMG_6845.jpg","IMG_6846.jpg","IMG_6855.jpg","IMG_6857.jpg"]
+    },
+    "נועם - מזמור לתודה": {
+      subtitle: "ספרון מזמור לתודה – קולקציית נועם",
+      images: ["IMG_6863.jpg","IMG_6864.jpg","IMG_6868.jpg","IMG_6878.jpg","IMG_6880.jpg","IMG_6922.jpg","IMG_6923.jpg"]
+    },
+    "נועם - נשמת כל חי": {
+      subtitle: "ספרון נשמת כל חי – קולקציית נועם",
+      images: ["IMG_6893.jpg","IMG_6894.jpg","IMG_6911.jpg","IMG_6912.jpg","IMG_6913.jpg","IMG_6914.jpg","IMG_6915.jpg","IMG_6916.jpg"]
+    },
+    "סדר הדלקת נרות - דגם בר": {
+      subtitle: "ברכון הדלקת נרות בעיצוב אישי",
+      images: ["IMG_6942.jpg","IMG_6943.jpg","IMG_6944.jpg","IMG_6949.jpg","IMG_6952.jpg","IMG_6955.jpg"]
+    },
+    "סדר הפרשת חלה - דגם שאנל": {
+      subtitle: "ספרון הפרשת חלה – דגם שאנל",
+      images: ["IMG_6799.jpg","IMG_6804.jpg","IMG_6805.jpg","IMG_6816.jpg","IMG_6817.jpg","IMG_6819.jpg","IMG_6829.jpg","IMG_6833.jpg"]
+    },
+    "תמונות כללי": {
+      subtitle: "גלריה כללית של המוצרים",
+      images: ["IMG_0078.jpg","IMG_0083.jpg","IMG_0087.jpg"]
+    }
+  };
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  function init() {
+    // Support both ?product= and #productName
+    const params = new URLSearchParams(window.location.search);
+    const productName = params.get('product') || decodeURIComponent(window.location.hash.slice(1));
+    const product = products[productName];
+
+    if (!product) {
+      document.getElementById('page-title').textContent = 'מוצר לא נמצא';
+      return;
+    }
+
+    document.title = productName + ' | מ.י.ה BY MAYA';
+    document.getElementById('breadcrumb-name').textContent = productName;
+    document.getElementById('page-title').textContent = productName;
+    document.getElementById('page-subtitle').textContent = product.subtitle;
+
+    currentImages = product.images.map(img => 'images/' + encodeURIComponent(productName) + '/' + img);
+
+    const grid = document.getElementById('gallery-grid');
+    product.images.forEach((img, i) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item fade-in';
+      item.innerHTML = '<img src="images/' + encodeURIComponent(productName) + '/' + img + '" alt="' + productName + ' - ' + (i+1) + '" loading="lazy" />';
+      item.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(item);
+    });
+
+    // Fade in observer
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  }
+
+  function openLightbox(index) {
+    currentIndex = index;
+    document.getElementById('lightbox-img').src = currentImages[index];
+    document.getElementById('lightbox-counter').textContent = (index + 1) + ' / ' + currentImages.length;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(e) {
+    if (e.target === document.getElementById('lightbox')) {
+      closeLightboxBtn();
+    }
+  }
+
+  function closeLightboxBtn() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navLightbox(dir) {
+    currentIndex = (currentIndex - dir + currentImages.length) % currentImages.length;
+    document.getElementById('lightbox-img').src = currentImages[currentIndex];
+    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightboxBtn();
+    if (e.key === 'ArrowRight') navLightbox(1);
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+  });
+
+  init();
+</script>
+</body>
+</html>
