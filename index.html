@@ -236,6 +236,12 @@
       gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
+    }
+    .hero-ctas .btn-primary,
+    .hero-ctas .btn-outline {
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn-primary {
@@ -854,6 +860,9 @@
       .hero-image-side { width: 100%; opacity: 0.3; }
       .hero-content { padding: 0 24px; }
       .hero-text { max-width: 100%; }
+      .hero-ctas { flex-wrap: nowrap; gap: 10px; }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-outline { padding: 12px 18px; font-size: 13px; }
 
       .strip { flex-direction: column; gap: 12px; padding: 20px; }
 
