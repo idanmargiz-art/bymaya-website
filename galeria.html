@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>גלריה | מ.י.ה BY MAYA</title>
+  <title>קולקציות | מ.י.ה BY MAYA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -11,104 +11,260 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --black: #111110; --stone-dark: #2a2925; --stone-mid: #6b6860;
-      --stone-light: #c8c4bc; --stone-pale: #f0ede8; --white: #faf9f7;
-      --gold: #b8a98c;
+      --black:       #2d1b0e;
+      --stone-dark:  #4a3020;
+      --stone-mid:   #8c7055;
+      --stone-light: #c8b49a;
+      --stone-pale:  #f4ede0;
+      --white:       #fdf8f0;
+      --gold:        #b8935a;
       --font-serif: 'Bodoni Moda', Georgia, serif;
-      --font-sans: 'Assistant', Arial, sans-serif;
+      --font-sans:  'Assistant', Arial, sans-serif;
     }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-sans); background: var(--white); color: var(--black); direction: rtl; text-align: right; line-height: 1.6; }
 
-    /* Header */
+    /* ─── HEADER ─── */
     .announcement-bar { background: var(--black); color: var(--stone-pale); text-align: center; font-size: 13px; letter-spacing: 0.08em; padding: 10px 20px; font-weight: 300; }
     header { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 1px solid var(--stone-light); padding: 0 40px; }
     .header-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .logo-block { display: flex; align-items: center; text-decoration: none; }
     .logo-block img { height: 56px; width: auto; }
-    .btn-whatsapp { display: flex; align-items: center; gap: 8px; background: var(--black); color: var(--white); text-decoration: none; padding: 10px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; border-radius: 2px; transition: background 0.2s; cursor: pointer; }
+    .btn-whatsapp { display: flex; align-items: center; gap: 8px; background: var(--black); color: var(--white); text-decoration: none; padding: 10px 20px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; border-radius: 2px; transition: background 0.2s; }
     .btn-whatsapp:hover { background: var(--stone-dark); }
 
-    /* Page header */
-    .page-header {
-      background: var(--stone-pale);
-      border-bottom: 1px solid var(--stone-light);
-      padding: 56px 40px 48px;
-      text-align: center;
-    }
+    /* ─── PAGE HEADER ─── */
+    .page-header { background: var(--stone-pale); border-bottom: 1px solid var(--stone-light); padding: 56px 40px 48px; text-align: center; }
     .breadcrumb { font-size: 13px; color: var(--stone-mid); margin-bottom: 16px; }
     .breadcrumb a { color: var(--stone-mid); text-decoration: none; }
     .breadcrumb a:hover { color: var(--black); }
-    .page-title { font-family: var(--font-serif); font-size: clamp(28px, 4vw, 48px); font-weight: 500; color: var(--black); margin-bottom: 12px; }
-    .page-subtitle { font-size: 15px; color: var(--stone-mid); font-weight: 300; }
+    .page-title { font-family: var(--font-serif); font-size: clamp(26px, 4vw, 44px); font-weight: 500; color: var(--black); margin-bottom: 10px; }
+    .page-subtitle { font-size: 15px; color: var(--stone-mid); font-weight: 300; max-width: 480px; margin: 0 auto; line-height: 1.65; }
 
-    /* Gallery grid */
-    .gallery-section { max-width: 1280px; margin: 0 auto; padding: 64px 40px; }
-    .gallery-grid {
+    /* ─── COLLECTION BADGE ─── */
+    .collection-badge {
+      display: inline-block;
+      margin: 24px auto 0;
+      background: var(--black);
+      color: var(--stone-pale);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 2px;
+    }
+
+    /* ─── PRODUCTS GRID ─── */
+    .products-section { max-width: 1280px; margin: 0 auto; padding: 64px 40px; }
+    .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 32px;
     }
-    .gallery-item {
+
+    .product-card {
+      cursor: pointer;
+      background: none;
+      border: none;
+      text-align: right;
+      padding: 0;
+      font-family: var(--font-sans);
+      color: var(--black);
+    }
+    .product-image-wrap {
       position: relative;
       aspect-ratio: 3/4;
       overflow: hidden;
       background: var(--stone-pale);
+      margin-bottom: 14px;
       border-radius: 2px;
-      cursor: pointer;
     }
-    .gallery-item img {
+    .product-image-wrap img {
       width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
       display: block;
     }
-    .gallery-item:hover img { transform: scale(1.04); }
+    .product-card:hover .product-image-wrap img { transform: scale(1.04); }
 
-    /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0.93);
+    .product-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      color: var(--stone-mid);
+      background: linear-gradient(160deg, var(--stone-pale), #e8ddd0);
+    }
+    .product-placeholder svg { opacity: 0.4; }
+    .product-placeholder span { font-size: 12px; letter-spacing: 0.08em; opacity: 0.6; }
+
+    .product-quick {
+      position: absolute; bottom: 14px; left: 0; right: 0;
+      display: flex; justify-content: center;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .product-card:hover .product-quick { opacity: 1; transform: translateY(0); }
+    .product-quick span {
+      background: var(--white); color: var(--black);
+      padding: 9px 24px; font-size: 13px; font-weight: 500;
+      border-radius: 1px; box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+      pointer-events: none;
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 16px; font-weight: 500; color: var(--black);
+      margin-bottom: 6px; line-height: 1.35;
+    }
+    .product-price {
+      font-size: 14px; color: var(--stone-dark); font-weight: 400;
+    }
+    .product-price-note { font-size: 12px; color: var(--stone-mid); margin-top: 2px; }
+
+    /* ─── PRODUCT MODAL ─── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(45,27,14,0.75);
       align-items: center; justify-content: center;
       padding: 20px;
+      backdrop-filter: blur(4px);
     }
-    .lightbox.open { display: flex; }
-    .lightbox-img {
-      max-width: 90vw; max-height: 90vh;
-      object-fit: contain;
-      border-radius: 2px;
-    }
-    .lightbox-close {
-      position: fixed; top: 20px; left: 20px;
-      background: none; border: none; color: white;
-      font-size: 32px; cursor: pointer; padding: 8px;
-      line-height: 1;
-      opacity: 0.8; transition: opacity 0.2s;
-    }
-    .lightbox-close:hover { opacity: 1; }
-    .lightbox-nav {
-      position: fixed; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.12); border: none; color: white;
-      font-size: 28px; cursor: pointer; padding: 16px 12px;
-      border-radius: 2px; transition: background 0.2s;
-    }
-    .lightbox-nav:hover { background: rgba(255,255,255,0.22); }
-    .lightbox-prev { right: 20px; }
-    .lightbox-next { left: 20px; }
-    .lightbox-counter {
-      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      color: rgba(255,255,255,0.6); font-size: 13px; font-family: var(--font-sans);
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 4px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
     }
 
-    /* Back & CTA */
+    .modal-close {
+      position: absolute; top: 16px; left: 16px;
+      background: none; border: none;
+      font-size: 24px; cursor: pointer;
+      color: var(--stone-mid); padding: 6px;
+      line-height: 1; transition: color 0.2s; z-index: 10;
+    }
+    .modal-close:hover { color: var(--black); }
+
+    /* Image slider side */
+    .modal-slider {
+      position: relative;
+      aspect-ratio: 3/4;
+      background: var(--stone-pale);
+      overflow: hidden;
+    }
+    .slider-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.25s;
+    }
+    .slider-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      color: var(--stone-mid);
+      background: linear-gradient(160deg, var(--stone-pale), #e8ddd0);
+    }
+    .slider-placeholder p { font-size: 14px; color: var(--stone-mid); font-weight: 300; text-align: center; padding: 0 24px; }
+
+    .slider-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(253,248,240,0.9); border: none;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; color: var(--black);
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .slider-btn:hover { background: var(--white); transform: translateY(-50%) scale(1.08); }
+    .slider-prev { right: 12px; }
+    .slider-next { left: 12px; }
+    .slider-btn.hidden { display: none; }
+
+    .slider-dots {
+      position: absolute; bottom: 12px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 6px;
+    }
+    .slider-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(253,248,240,0.6); border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .slider-dot.active { background: var(--white); transform: scale(1.2); }
+
+    /* Info side */
+    .modal-info {
+      padding: 40px 32px 32px;
+      display: flex; flex-direction: column;
+      gap: 0;
+    }
+    .modal-collection-label {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .modal-product-name {
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 500; color: var(--black);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .modal-product-subtitle {
+      font-size: 14px; color: var(--stone-mid);
+      font-weight: 300; margin-bottom: 28px; line-height: 1.6;
+    }
+
+    .price-section {
+      border-top: 1px solid var(--stone-light);
+      padding-top: 20px; margin-bottom: 20px;
+    }
+    .price-section-title {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--stone-mid); margin-bottom: 12px;
+    }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--stone-pale);
+      font-size: 14px;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row-label { color: var(--stone-dark); font-weight: 400; }
+    .price-row-val { color: var(--black); font-weight: 600; direction: ltr; }
+    .price-base-row { background: var(--stone-pale); margin: 0 -4px; padding: 9px 4px; border-radius: 2px; }
+    .price-base-row .price-row-label { font-weight: 600; }
+
+    .modal-note {
+      font-size: 12px; color: var(--stone-mid); font-weight: 300;
+      margin-bottom: 24px; line-height: 1.6;
+    }
+
+    .btn-wa-order {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366; color: var(--white);
+      text-decoration: none; padding: 14px 24px;
+      font-size: 15px; font-weight: 600; letter-spacing: 0.03em;
+      border-radius: 3px; transition: background 0.2s, transform 0.15s;
+      margin-top: auto;
+    }
+    .btn-wa-order:hover { background: #1fba5a; transform: translateY(-1px); }
+
+    .slider-counter {
+      position: absolute; bottom: 32px; right: 12px;
+      font-size: 11px; color: rgba(253,248,240,0.7);
+      font-family: var(--font-sans); display: none;
+    }
+
+    /* ─── BOTTOM ACTIONS ─── */
     .bottom-actions {
-      text-align: center;
-      padding: 0 40px 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
+      text-align: center; padding: 0 40px 80px;
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
     }
     .btn-back {
       display: inline-flex; align-items: center; gap: 8px;
@@ -117,38 +273,36 @@
       padding: 12px 28px; font-size: 14px; font-weight: 500;
       font-family: var(--font-sans);
       letter-spacing: 0.04em; border-radius: 2px;
-      text-decoration: none; transition: all 0.2s; cursor: pointer;
+      text-decoration: none; transition: all 0.2s;
     }
     .btn-back:hover { color: var(--black); border-color: var(--black); }
-    .btn-primary {
-      background: var(--black); color: var(--white);
-      padding: 14px 36px; font-size: 14px; font-weight: 500;
-      letter-spacing: 0.06em; text-decoration: none; border-radius: 2px;
-      transition: background 0.2s; display: inline-block;
-    }
-    .btn-primary:hover { background: var(--stone-dark); }
 
-    /* WhatsApp float */
+    /* ─── WHATSAPP FLOAT ─── */
     .wa-float { position: fixed; bottom: 28px; left: 28px; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 100; text-decoration: none; transition: transform 0.2s; }
     .wa-float:hover { transform: scale(1.08); }
 
-    /* Footer */
+    /* ─── FOOTER ─── */
     footer { background: var(--black); color: var(--stone-pale); padding: 40px; text-align: center; font-size: 13px; color: var(--stone-mid); }
     footer a { color: var(--stone-mid); text-decoration: none; }
 
-    /* Responsive */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       header { padding: 0 20px; }
       .page-header { padding: 40px 24px 32px; }
-      .gallery-section { padding: 40px 16px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .products-section { padding: 40px 16px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .bottom-actions { padding: 0 24px 56px; }
+
+      .modal { grid-template-columns: 1fr; max-height: 95vh; }
+      .modal-slider { aspect-ratio: 4/3; }
+      .modal-info { padding: 24px 20px 20px; }
+      .modal-close { top: 10px; left: 10px; }
     }
     @media (max-width: 480px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
     }
 
-    /* Fade in */
+    /* ─── FADE IN ─── */
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
@@ -171,32 +325,57 @@
 
 <!-- Page Header -->
 <div class="page-header">
-  <p class="breadcrumb"><a href="index.html">דף הבית</a> ← <span id="breadcrumb-name">גלריה</span></p>
+  <p class="breadcrumb"><a href="index.html">דף הבית</a> &larr; <span id="breadcrumb-name">קולקציה</span></p>
   <h1 class="page-title" id="page-title">טוען...</h1>
   <p class="page-subtitle" id="page-subtitle"></p>
+  <span class="collection-badge" id="collection-badge"></span>
 </div>
 
-<!-- Gallery -->
-<section class="gallery-section">
-  <div class="gallery-grid" id="gallery-grid"></div>
+<!-- Products Grid -->
+<section class="products-section">
+  <div class="products-grid" id="products-grid"></div>
 </section>
 
 <!-- Bottom actions -->
 <div class="bottom-actions">
-  <a href="https://wa.me/972549506336" class="btn-primary" target="_blank" rel="noopener">להזמנה ופרטים נוספים בוואטסאפ</a>
   <a href="index.html" class="btn-back">
     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     חזרה לדף הבית
   </a>
 </div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightboxBtn()">✕</button>
-  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(1); event.stopPropagation()">‹</button>
-  <img class="lightbox-img" id="lightbox-img" src="" alt="" />
-  <button class="lightbox-nav lightbox-next" onclick="navLightbox(-1); event.stopPropagation()">›</button>
-  <div class="lightbox-counter" id="lightbox-counter"></div>
+<!-- Product Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOverlay(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="סגור">✕</button>
+
+    <!-- Slider -->
+    <div class="modal-slider" id="modal-slider">
+      <img class="slider-img" id="slider-img" src="" alt="" />
+      <button class="slider-btn slider-prev" id="slider-prev" onclick="sliderNav(-1)" aria-label="הקודם">&#8250;</button>
+      <button class="slider-btn slider-next" id="slider-next" onclick="sliderNav(1)" aria-label="הבא">&#8249;</button>
+      <div class="slider-dots" id="slider-dots"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="modal-info">
+      <p class="modal-collection-label" id="modal-collection-label"></p>
+      <h2 class="modal-product-name" id="modal-product-name"></h2>
+      <p class="modal-product-subtitle" id="modal-product-subtitle"></p>
+
+      <div class="price-section">
+        <p class="price-section-title">מחירון</p>
+        <div id="price-rows"></div>
+      </div>
+
+      <p class="modal-note">המחירים הם ליחידה, בכפוף לכמות מינימום. לפרטים נוספים ולהזמנה – צרו קשר בוואטסאפ.</p>
+
+      <a id="btn-wa" href="#" class="btn-wa-order" target="_blank" rel="noopener">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.555 4.122 1.528 5.855L0 24l6.335-1.502A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.373l-.36-.214-3.727.978.995-3.636-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+        להזמנה בוואטסאפ
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- WhatsApp Float -->
@@ -209,112 +388,262 @@
 </footer>
 
 <script>
-  const products = {
-    "ברכות השחר": {
-      subtitle: "ברכונים לחינה ומקווה",
-      images: ["IMG_6666.jpg","IMG_6667.jpg","IMG_6668.jpg","IMG_6673.jpg","IMG_6674.jpg","IMG_6685.jpg","IMG_6686.jpg"]
-    },
-    "הבדלה - דגם ניסים": {
-      subtitle: "ברכון הבדלה בעיצוב אישי",
-      images: ["IMG_6633.jpg","IMG_6638.jpg","IMG_6639.jpg","IMG_6642.jpg","IMG_6644.jpg","IMG_6652.jpg","IMG_6654.jpg","IMG_6661.jpg"]
-    },
-    "נועם - הפרשת חלה": {
-      subtitle: "ספרון הפרשת חלה – קולקציית נועם",
-      images: ["IMG_6843.jpg","IMG_6844.jpg","IMG_6845.jpg","IMG_6846.jpg","IMG_6855.jpg","IMG_6857.jpg"]
-    },
-    "נועם - מזמור לתודה": {
-      subtitle: "ספרון מזמור לתודה – קולקציית נועם",
-      images: ["IMG_6863.jpg","IMG_6864.jpg","IMG_6868.jpg","IMG_6878.jpg","IMG_6880.jpg","IMG_6922.jpg","IMG_6923.jpg"]
-    },
-    "נועם - נשמת כל חי": {
-      subtitle: "ספרון נשמת כל חי – קולקציית נועם",
-      images: ["IMG_6893.jpg","IMG_6894.jpg","IMG_6911.jpg","IMG_6912.jpg","IMG_6913.jpg","IMG_6914.jpg","IMG_6915.jpg","IMG_6916.jpg"]
-    },
-    "סדר הדלקת נרות - דגם בר": {
-      subtitle: "ברכון הדלקת נרות בעיצוב אישי",
-      images: ["IMG_6942.jpg","IMG_6943.jpg","IMG_6944.jpg","IMG_6949.jpg","IMG_6952.jpg","IMG_6955.jpg"]
-    },
-    "סדר הפרשת חלה - דגם שאנל": {
-      subtitle: "ספרון הפרשת חלה – דגם שאנל",
-      images: ["IMG_6799.jpg","IMG_6804.jpg","IMG_6805.jpg","IMG_6816.jpg","IMG_6817.jpg","IMG_6819.jpg","IMG_6829.jpg","IMG_6833.jpg"]
-    },
-    "תמונות כללי": {
-      subtitle: "גלריה כללית של המוצרים",
-      images: ["IMG_0078.jpg","IMG_0083.jpg","IMG_0087.jpg"]
-    }
-  };
+const PHONE = '972549506336';
 
-  let currentImages = [];
-  let currentIndex = 0;
-
-  function init() {
-    // Support both ?product= and #productName
-    const params = new URLSearchParams(window.location.search);
-    const productName = params.get('product') || decodeURIComponent(window.location.hash.slice(1));
-    const product = products[productName];
-
-    if (!product) {
-      document.getElementById('page-title').textContent = 'מוצר לא נמצא';
-      return;
-    }
-
-    document.title = productName + ' | מ.י.ה BY MAYA';
-    document.getElementById('breadcrumb-name').textContent = productName;
-    document.getElementById('page-title').textContent = productName;
-    document.getElementById('page-subtitle').textContent = product.subtitle;
-
-    currentImages = product.images.map(img => 'images/' + encodeURIComponent(productName) + '/' + img);
-
-    const grid = document.getElementById('gallery-grid');
-    product.images.forEach((img, i) => {
-      const item = document.createElement('div');
-      item.className = 'gallery-item fade-in';
-      item.innerHTML = '<img src="images/' + encodeURIComponent(productName) + '/' + img + '" alt="' + productName + ' - ' + (i+1) + '" loading="lazy" />';
-      item.addEventListener('click', () => openLightbox(i));
-      grid.appendChild(item);
-    });
-
-    // Fade in observer
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+const collections = {
+  boutique: {
+    name: 'קולקציית בוטיק',
+    badge: 'בדרכי נועם',
+    subtitle: 'ברכונים לאירועים מיוחדים – שבת חתן, בר/בת מצווה, חינה ועוד',
+    products: [
+      {
+        name: 'ספרון ברכות השחר',
+        subtitle: 'ספרון ברכות השחר, מזמור לתודה + הקדשה אישית',
+        folder: 'ברכות השחר',
+        images: ['IMG_6666.jpg','IMG_6667.jpg','IMG_6668.jpg','IMG_6673.jpg','IMG_6674.jpg','IMG_6685.jpg','IMG_6686.jpg'],
+        basePrice: 14,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ספרון הפרשת חלה – דגם שאנל',
+        subtitle: 'ספרון הפרשת חלה + הקדשה אישית',
+        folder: 'סדר הפרשת חלה - דגם שאנל',
+        images: ['IMG_6799.jpg','IMG_6804.jpg','IMG_6805.jpg','IMG_6816.jpg','IMG_6817.jpg','IMG_6819.jpg','IMG_6829.jpg','IMG_6833.jpg'],
+        basePrice: 14,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון סדר הדלקת נרות – דגם בר',
+        subtitle: 'ברכון הדלקת נרות + הקדשה אישית',
+        folder: 'סדר הדלקת נרות - דגם בר',
+        images: ['IMG_6942.jpg','IMG_6943.jpg','IMG_6944.jpg','IMG_6949.jpg','IMG_6952.jpg','IMG_6955.jpg'],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון מזמור לתודה – דגם ליאור',
+        subtitle: 'ברכון מזמור לתודה + הקדשה אישית',
+        folder: null,
+        images: [],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ספרון ברכת המזון – דגם רוית & אדיר',
+        subtitle: 'ספרון ברכת המזון לשבת חתן / בר-בת מצווה + הקדשה אישית',
+        folder: null,
+        images: [],
+        basePrice: 14,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון מתקפל תפילת הדרך – דגם עדי',
+        subtitle: 'ברכון מתקפל תפילת הדרך',
+        folder: null,
+        images: [],
+        basePrice: 10,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      }
+    ]
+  },
+  memory: {
+    name: 'קולקציית זיכרון והנצחה',
+    badge: 'קולקציית נועם',
+    subtitle: 'מוקדשת לאורו ולזכרו של סמ"ר נועם חבה הי"ד, שנפל בקרב במלחמת חרבות ברזל',
+    products: [
+      {
+        name: 'ספרון הפרשת חלה לעילוי נשמת',
+        subtitle: 'ספרון הפרשת חלה + תמונה',
+        folder: 'נועם - הפרשת חלה',
+        images: ['IMG_6843.jpg','IMG_6844.jpg','IMG_6845.jpg','IMG_6846.jpg','IMG_6855.jpg','IMG_6857.jpg'],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ספרון נשמת כל חי לעילוי נשמת',
+        subtitle: 'ספרון נשמת כל חי + תמונה',
+        folder: 'נועם - נשמת כל חי',
+        images: ['IMG_6893.jpg','IMG_6894.jpg','IMG_6911.jpg','IMG_6912.jpg','IMG_6913.jpg','IMG_6914.jpg','IMG_6915.jpg','IMG_6916.jpg'],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון מזמור לתודה לעילוי נשמת',
+        subtitle: 'ברכון מזמור לתודה דו"צ + תמונה',
+        folder: 'נועם - מזמור לתודה',
+        images: ['IMG_6863.jpg','IMG_6864.jpg','IMG_6868.jpg','IMG_6878.jpg','IMG_6880.jpg','IMG_6922.jpg','IMG_6923.jpg'],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון סדר הבדלה לעילוי נשמת',
+        subtitle: 'ברכון סדר הבדלה דו"צ + תמונה',
+        folder: 'הבדלה - דגם ניסים',
+        images: ['IMG_6633.jpg','IMG_6638.jpg','IMG_6639.jpg','IMG_6642.jpg','IMG_6644.jpg','IMG_6652.jpg','IMG_6654.jpg','IMG_6661.jpg'],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ספרון ברכת המזון לעילוי נשמת',
+        subtitle: 'ספרון ברכת המזון + רקע תמונת סקצ\'',
+        folder: null,
+        images: [],
+        basePrice: 12,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      },
+      {
+        name: 'ברכון מתקפל תפילת הדרך לעילוי נשמת',
+        subtitle: 'ברכון מתקפל תפילת הדרך',
+        folder: null,
+        images: [],
+        basePrice: 10,
+        extras: [{ name: 'שקית צלופן', price: 1 }, { name: '2 נרות חימום', price: 2 }]
+      }
+    ]
   }
+};
 
-  function openLightbox(index) {
-    currentIndex = index;
-    document.getElementById('lightbox-img').src = currentImages[index];
-    document.getElementById('lightbox-counter').textContent = (index + 1) + ' / ' + currentImages.length;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+let currentCollection = null;
+let sliderImages = [];
+let sliderIndex = 0;
 
-  function closeLightbox(e) {
-    if (e.target === document.getElementById('lightbox')) {
-      closeLightboxBtn();
-    }
-  }
+function init() {
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get('collection') || 'boutique';
+  currentCollection = collections[key] || collections.boutique;
 
-  function closeLightboxBtn() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  document.title = currentCollection.name + ' | מ.י.ה BY MAYA';
+  document.getElementById('breadcrumb-name').textContent = currentCollection.name;
+  document.getElementById('page-title').textContent = currentCollection.name;
+  document.getElementById('page-subtitle').textContent = currentCollection.subtitle;
+  document.getElementById('collection-badge').textContent = currentCollection.badge;
 
-  function navLightbox(dir) {
-    currentIndex = (currentIndex - dir + currentImages.length) % currentImages.length;
-    document.getElementById('lightbox-img').src = currentImages[currentIndex];
-    document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentImages.length;
-  }
+  const grid = document.getElementById('products-grid');
+  currentCollection.products.forEach((p, i) => {
+    const card = document.createElement('button');
+    card.className = 'product-card fade-in';
+    card.setAttribute('aria-label', p.name);
 
-  document.addEventListener('keydown', e => {
-    if (!document.getElementById('lightbox').classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightboxBtn();
-    if (e.key === 'ArrowRight') navLightbox(1);
-    if (e.key === 'ArrowLeft') navLightbox(-1);
+    const coverImg = p.images.length
+      ? `<img src="images/${encodeURIComponent(p.folder)}/${p.images[0]}" alt="${p.name}" loading="lazy" />`
+      : `<div class="product-placeholder">
+           <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+           <span>תמונות בקרוב</span>
+         </div>`;
+
+    card.innerHTML = `
+      <div class="product-image-wrap">
+        ${coverImg}
+        <div class="product-quick"><span>לפרטים ומחירים</span></div>
+      </div>
+      <p class="product-name">${p.name}</p>
+      <p class="product-price">מחיר בסיס: ₪${p.basePrice}</p>
+      <p class="product-price-note">+ תוספות אופציונליות</p>
+    `;
+    card.addEventListener('click', () => openModal(i));
+    grid.appendChild(card);
   });
 
-  init();
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+function openModal(productIndex) {
+  const p = currentCollection.products[productIndex];
+  sliderImages = p.images.length
+    ? p.images.map(img => 'images/' + encodeURIComponent(p.folder) + '/' + img)
+    : [];
+  sliderIndex = 0;
+
+  document.getElementById('modal-collection-label').textContent = currentCollection.badge;
+  document.getElementById('modal-product-name').textContent = p.name;
+  document.getElementById('modal-product-subtitle').textContent = p.subtitle;
+
+  // Prices
+  const priceRows = document.getElementById('price-rows');
+  priceRows.innerHTML = `
+    <div class="price-row price-base-row">
+      <span class="price-row-label">מחיר בסיס</span>
+      <span class="price-row-val">₪${p.basePrice} ליחידה</span>
+    </div>
+    ${p.extras.map(e => `
+      <div class="price-row">
+        <span class="price-row-label">תוספת ${e.name}</span>
+        <span class="price-row-val">+ ₪${e.price}</span>
+      </div>
+    `).join('')}
+  `;
+
+  // WhatsApp link
+  const msg = encodeURIComponent(`שלום מיה! אני מעוניין/ת לשמוע פרטים על: ${p.name} (${currentCollection.name})`);
+  document.getElementById('btn-wa').href = `https://wa.me/${PHONE}?text=${msg}`;
+
+  // Slider
+  const sliderEl = document.getElementById('modal-slider');
+  const imgEl = document.getElementById('slider-img');
+
+  if (sliderImages.length === 0) {
+    sliderEl.innerHTML = `
+      <div class="slider-placeholder">
+        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <p>תמונות המוצר יתווספו בקרוב</p>
+      </div>
+    `;
+  } else {
+    sliderEl.innerHTML = `
+      <img class="slider-img" id="slider-img" src="${sliderImages[0]}" alt="${p.name}" />
+      <button class="slider-btn slider-prev${sliderImages.length <= 1 ? ' hidden' : ''}" onclick="sliderNav(-1)" aria-label="הקודם">&#8250;</button>
+      <button class="slider-btn slider-next${sliderImages.length <= 1 ? ' hidden' : ''}" onclick="sliderNav(1)" aria-label="הבא">&#8249;</button>
+      <div class="slider-dots" id="slider-dots"></div>
+    `;
+    buildDots();
+  }
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function buildDots() {
+  const dots = document.getElementById('slider-dots');
+  if (!dots || sliderImages.length <= 1) return;
+  dots.innerHTML = sliderImages.map((_, i) =>
+    `<button class="slider-dot${i === sliderIndex ? ' active' : ''}" onclick="goToSlide(${i})" aria-label="תמונה ${i+1}"></button>`
+  ).join('');
+}
+
+function goToSlide(i) {
+  sliderIndex = i;
+  const img = document.getElementById('slider-img');
+  if (img) { img.style.opacity = 0; setTimeout(() => { img.src = sliderImages[i]; img.style.opacity = 1; }, 150); }
+  buildDots();
+}
+
+function sliderNav(dir) {
+  if (!sliderImages.length) return;
+  sliderIndex = (sliderIndex + dir + sliderImages.length) % sliderImages.length;
+  goToSlide(sliderIndex);
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOverlay(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowRight') sliderNav(-1);
+  if (e.key === 'ArrowLeft') sliderNav(1);
+});
+
+init();
 </script>
 </body>
 </html>
