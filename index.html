@@ -822,12 +822,19 @@
     .mobile-nav a {
       text-decoration: none;
       color: var(--black);
-      font-size: 22px;
-      font-family: var(--font-serif);
-      font-weight: 500;
+      font-size: 20px;
+      font-family: var(--font-sans);
+      font-weight: 300;
+      letter-spacing: 0.04em;
       padding: 18px 0;
       border-bottom: 1px solid var(--stone-light);
       cursor: pointer;
+    }
+    .mobile-nav a.nav-wa {
+      color: var(--black);
+      font-weight: 600;
+      border-bottom: none;
+      margin-top: 24px;
     }
     .mobile-nav-close {
       position: absolute;
@@ -941,7 +948,7 @@
   <a href="#about" onclick="toggleMenu()">הסיפור שלנו</a>
   <a href="#process" onclick="toggleMenu()">איך זה עובד</a>
   <a href="#contact" onclick="toggleMenu()">צור קשר</a>
-  <a href="https://wa.me/972549506336" target="_blank" rel="noopener" style="color:#25D366;border-bottom:none;margin-top:24px;">ייעוץ בוואטסאפ</a>
+  <a href="https://wa.me/972549506336" target="_blank" rel="noopener" class="nav-wa">ייעוץ בוואטסאפ</a>
 </nav>
 
 <!-- Hero -->
@@ -1133,7 +1140,7 @@
           מה המינימום להזמנה?
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </button>
-        <div class="faq-a">המינימום הוא 50 יחידות לרוב המוצרים. לחלק מהדגמים ניתן להזמין מ־30 יחידות. ניתן לפנות אלינו לייעוץ על כמויות קטנות יותר.</div>
+        <div class="faq-a">המינימום הוא 20 יחידות. להזמנות מעל 50 יחידות מקבלים מחיר מיוחד – ניתן לפנות אלינו לייעוץ.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -1141,13 +1148,6 @@
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
         </button>
         <div class="faq-a">לאחר מילוי הפרטים ותשלום, תקבלו הדמיה דיגיטלית תוך 48 שעות. ניתן לבקש עד 2 תיקונים ללא עלות נוספת.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          אילו אפשרויות נייר יש?
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
-        </button>
-        <div class="faq-a">אנו מציעים: נייר מט פרימיום, נייר פנינה (מבריק), נייר טקסטורה (גרגרי) ונייר קראפט. כל סוג נייר בעובי 250–350 גר'.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">

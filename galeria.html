@@ -397,7 +397,7 @@ const collections = {
     subtitle: 'ברכונים לאירועים מיוחדים – שבת חתן, בר/בת מצווה, חינה ועוד',
     products: [
       {
-        name: 'ספרון ברכות השחר',
+        name: 'ספרון ברכות השחר – בדרכי נועם',
         subtitle: 'ספרון ברכות השחר, מזמור לתודה + הקדשה אישית',
         folder: 'ברכות השחר',
         images: ['IMG_6666.jpg','IMG_6667.jpg','IMG_6668.jpg','IMG_6673.jpg','IMG_6674.jpg','IMG_6685.jpg','IMG_6686.jpg'],
@@ -448,7 +448,7 @@ const collections = {
   },
   memory: {
     name: 'קולקציית זיכרון והנצחה',
-    badge: 'קולקציית נועם',
+    badge: '',
     subtitle: 'מוקדשת לאורו ולזכרו של סמ"ר נועם חבה הי"ד, שנפל בקרב במלחמת חרבות ברזל',
     products: [
       {
@@ -516,7 +516,12 @@ function init() {
   document.getElementById('breadcrumb-name').textContent = currentCollection.name;
   document.getElementById('page-title').textContent = currentCollection.name;
   document.getElementById('page-subtitle').textContent = currentCollection.subtitle;
-  document.getElementById('collection-badge').textContent = currentCollection.badge;
+  const badgeEl = document.getElementById('collection-badge');
+  if (currentCollection.badge) {
+    badgeEl.textContent = currentCollection.badge;
+  } else {
+    badgeEl.style.display = 'none';
+  }
 
   const grid = document.getElementById('products-grid');
   currentCollection.products.forEach((p, i) => {
